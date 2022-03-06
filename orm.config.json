@@ -1,0 +1,14 @@
+{
+    "type": "postgres",
+    "name": "default",
+    "username": "root",
+    "password": "Passw0rd!!",
+    "host": "localhost",
+    "port": 5432,
+    "database": "store-books",
+    "entities": ["src/**/**/*.entity{.ts,.js}"],
+    "migrations": ["src/api/database/migrations/*{.ts,.js}"],
+    "cli": {
+        "migrationsDir": "src/api/database/migrations"
+    }
+}
