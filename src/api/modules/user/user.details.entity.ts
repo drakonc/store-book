@@ -6,7 +6,7 @@ export class UserDetails extends BaseEntity {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
-    @Column({type: 'varchar', length: 50, nullable: false})
+    @Column({type: 'varchar', length: 50, nullable: true})
     name: string;
 
     @Column({type: 'varchar', length:50, nullable: true})

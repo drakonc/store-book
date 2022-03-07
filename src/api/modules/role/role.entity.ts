@@ -1,5 +1,6 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { User } from '../user/user.entity';
+import { StatusConfig } from '../../../shared/config.status';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('roles')
 export class Role extends BaseEntity {
@@ -13,10 +14,10 @@ export class Role extends BaseEntity {
     @Column({ type: 'text', nullable: false })
     description: string;
 
-    @OneToMany(() => User, user => user.role, {nullable: false})
+    @OneToMany(() => User, user => user.role, {eager: false, nullable: false})
     users: User[];
 
-    @Column({ type: 'varchar', default: 'ACTIVO', length: 8 })
+    @Column({ type: 'varchar', default: StatusConfig.ACTIVO, length: 8 })
     status: string;
 
     @CreateDateColumn({ type: 'timestamp', name: 'create_at' })

@@ -1,6 +1,7 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { UserDetails } from './user.details.entity';
 import { Role } from '../role/role.entity';
+import { StatusConfig } from '../../../shared/config.status';
+import { UserDetails } from './user.details.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -24,7 +25,7 @@ export class User extends BaseEntity {
     @ManyToOne(() => Role, role => role.users, {eager: true})
     role: Role;
 
-    @Column({type: 'varchar', default: 'ACTIVO' ,length: 8})
+    @Column({type: 'varchar', default: StatusConfig.ACTIVO ,length: 8})
     status: string;
 
     @CreateDateColumn({type: 'timestamp', name: 'created_at'})
