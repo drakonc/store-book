@@ -1,13 +1,15 @@
 import { ReadUserDto } from './dto';
 import { User } from './user.entity';
+import { AuthGuard } from '@nestjs/passport';
 import { UserService } from './user.service';
-import { Controller, Get, Param, ParseIntPipe, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post, Body, Put, Delete, UseGuards } from '@nestjs/common';
 
 @Controller('users')
 export class UserController {
 
     constructor(private readonly _userService: UserService){}
 
+    @UseGuards(AuthGuard())
     @Get()
     public async getUsers(): Promise<ReadUserDto[]>{
         return this._userService.getAll();
