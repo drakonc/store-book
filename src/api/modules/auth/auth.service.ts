@@ -10,6 +10,7 @@ import { IJwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
+    
     constructor(@InjectRepository(AuthRepository) private readonly _authRepository: AuthRepository, private readonly _jwtService: JwtService) { }
 
     async signup(signupDTO: SignupDto): Promise<void> {
